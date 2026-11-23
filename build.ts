@@ -62,7 +62,23 @@ function writeIfChanged(file: string, text: string) {
 
 function notes() {
   const r = RELEASES[0];
-  const text = `${releaseMarkdown(r)}\n\n---\n\nDownload **SensorLookup.plugin.js** below and drop it into the BetterDiscord plugins folder. Installed copies update themselves.\n`;
+  const text = [
+    "## Install",
+    "",
+    "1. Download **`SensorLookup.plugin.js`** from **Assets** below.",
+    "2. Put it into the BetterDiscord plugins folder: Settings → BetterDiscord → Plugins → Open Plugins Folder.",
+    "3. Enable **SensorLookup** in the list.",
+    "",
+    "Already installed? The plugin updates itself, nothing to do.",
+    "",
+    "> [!NOTE]",
+    "> The **Source code** archives are added by GitHub to every release automatically. You don't need them to install the plugin.",
+    "",
+    `## What's new in ${r.version}`,
+    "",
+    releaseMarkdown(r).replace(/^### /gm, "#### "),
+    "",
+  ].join("\n");
   writeFileSync("release-notes.md", text);
   console.log(`release-notes.md: v${r.version}`);
 }
