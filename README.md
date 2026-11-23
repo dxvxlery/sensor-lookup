@@ -6,12 +6,13 @@
 
 **A one-click profile of any Discord member, with data from [discord-sensor.com](https://discord-sensor.com) right inside the client.**
 
-[![version](https://img.shields.io/badge/version-4.1.0-5865F2?style=flat-square)](dist/SensorLookup.plugin.js)
+[![version](https://img.shields.io/badge/version-4.2.0-5865F2?style=flat-square)](dist/SensorLookup.plugin.js)
 [![BetterDiscord](https://img.shields.io/badge/BetterDiscord-plugin-3E82E5?style=flat-square)](https://betterdiscord.app)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)](src)
-[![size](https://img.shields.io/badge/size-74_KB-23A55A?style=flat-square)](dist/SensorLookup.plugin.js)
+[![release](https://img.shields.io/badge/download-latest_release-2EA043?style=flat-square&logo=github)](https://github.com/dxvxlery/sensor-lookup/releases/latest)
+[![size](https://img.shields.io/badge/size-75_KB-23A55A?style=flat-square)](dist/SensorLookup.plugin.js)
 
-[Features](#features) · [Install](#install) · [Tokens](#tokens) · [Usage](#usage) · [FAQ](#faq)
+[Features](#features) · [Install](#install) · [Tokens](#tokens) · [Updates](#updates) · [Usage](#usage) · [FAQ](#faq)
 
 </div>
 
@@ -39,7 +40,7 @@ Right-click a member → **Discord Sensor** to open their profile window.
 - Responses are cached for a while, so reopening a profile is instant.
 - You can jump from a friend to their profile and back.
 - If the site returns something unexpected, only that tab breaks — the rest of the window keeps working.
-- After an update the plugin shows what's new.
+- It updates itself and shows what's new after an update.
 
 </details>
 
@@ -48,7 +49,7 @@ Right-click a member → **Discord Sensor** to open their profile window.
 > [!IMPORTANT]
 > You need your own discord-sensor.com account and [BetterDiscord](https://betterdiscord.app) installed.
 
-1. Download [`SensorLookup.plugin.js`](dist/SensorLookup.plugin.js).
+1. Download `SensorLookup.plugin.js` from the [latest release](https://github.com/dxvxlery/sensor-lookup/releases/latest).
 2. Open Settings → **BetterDiscord** → **Plugins** → **Open Plugins Folder** and drop the file there.
 3. Enable **SensorLookup** in the list.
 
@@ -75,6 +76,10 @@ flowchart LR
 > There's nothing to paste. While the plugin settings are open, it notices copied values, saves them and clears the clipboard.
 
 Then press **Проверить** (Check): the plugin makes a test request and tells you whether it works.
+
+## Updates
+
+The plugin checks for a new version 15 seconds after Discord starts and then every 6 hours, and asks before installing it. You can also press **Проверить** (Check) in the **Обновления** (Updates) section of the settings, or turn automatic checks off there. Every release is listed on the [releases page](https://github.com/dxvxlery/sensor-lookup/releases) and in the [changelog](CHANGELOG.md).
 
 ## Usage
 
@@ -116,6 +121,19 @@ Only on your machine, in the BetterDiscord plugins folder. They are sent only to
 
 > [!CAUTION]
 > Never share `SensorLookup.config.json`: the `sessionid` in it gives access to your account on the site.
+
+<details>
+<summary><b>GitHub Packages</b></summary>
+
+Every release is also published as `@dxvxlery/sensor-lookup` to GitHub Packages. The package contains the built plugin in `dist/`.
+
+```powershell
+npm install @dxvxlery/sensor-lookup --registry=https://npm.pkg.github.com
+```
+
+GitHub Packages requires a personal access token with `read:packages` in your `.npmrc`.
+
+</details>
 
 <details>
 <summary><b>Building from source</b></summary>

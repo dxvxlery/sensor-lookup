@@ -1,8 +1,15 @@
 import { build, transform, type Plugin } from "esbuild";
 import { readFileSync, writeFileSync, mkdirSync, statSync, readdirSync, rmSync } from "node:fs";
 import { spawnSync } from "node:child_process";
+import { RELEASES, releaseMarkdown, changelogMarkdown } from "./src/release-notes.ts";
 
 const pkg = JSON.parse(readFileSync("package.json", "utf8"));
+const REPO = "https://github.com/dxvxlery/sensor-lookup";
+
+if (RELEASES[0].version !== pkg.version) {
+  console.error(`package.json version ${pkg.version} has no entry at the top of src/releases.ts (latest: ${RELEASES[0].version})`);
+  process.exit(1);
+}
 
 const define = { __VERSION__: JSON.stringify(pkg.version), __UPDATE_URL__: JSON.stringify(pkg.updateUrl || "") };
 
@@ -35,11 +42,29 @@ async function plugin() {
     define,
     plugins: [css],
   });
-  const banner = `/**\n * @name SensorLookup\n * @description ${pkg.description}\n * @version ${pkg.version}\n * @author local${pkg.updateUrl ? `\n * @updateUrl ${pkg.updateUrl}` : ""}\n */\n`;
+  const banner = `/**\n * @name SensorLookup\n * @description ${pkg.description}\n * @version ${pkg.version}\n * @author dxvxlery\n * @source ${REPO}\n * @website ${REPO}${pkg.updateUrl ? `\n * @updateUrl ${pkg.updateUrl}` : ""}\n */\n`;
   writeFileSync(out, banner + result.outputFiles[0].text);
   const kb = statSync(out).size / 1024;
   console.log(`${out}: ${kb.toFixed(1)} KB`);
   syncBadges(pkg.version, Math.round(kb));
+  writeIfChanged("CHANGELOG.md", changelogMarkdown(REPO));
+}
+
+function writeIfChanged(file: string, text: string) {
+  let old = "";
+  try {
+    old = readFileSync(file, "utf8");
+  } catch {}
+  if (old === text) return;
+  writeFileSync(file, text);
+  console.log(`${file}: updated`);
+}
+
+function notes() {
+  const r = RELEASES[0];
+  const text = `${releaseMarkdown(r)}\n\n---\n\nDownload **SensorLookup.plugin.js** below and drop it into the BetterDiscord plugins folder. Installed copies update themselves.\n`;
+  writeFileSync("release-notes.md", text);
+  console.log(`release-notes.md: v${r.version}`);
 }
 
 function syncBadges(version: string, kb: number) {
@@ -78,4 +103,4 @@ async function tests() {
   process.exit(r.status ?? 1);
 }
 
-await (process.argv.includes("--test") ? tests() : plugin());
+await (process.argv.includes("--test") ? tests() : process.argv.includes("--notes") ? notes() : plugin());

@@ -6,12 +6,13 @@
 
 **Досье на участника Discord в один клик: данные с [discord-sensor.com](https://discord-sensor.com) прямо в клиенте.**
 
-[![version](https://img.shields.io/badge/version-4.1.0-5865F2?style=flat-square)](dist/SensorLookup.plugin.js)
+[![version](https://img.shields.io/badge/version-4.2.0-5865F2?style=flat-square)](dist/SensorLookup.plugin.js)
 [![BetterDiscord](https://img.shields.io/badge/BetterDiscord-plugin-3E82E5?style=flat-square)](https://betterdiscord.app)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)](src)
-[![size](https://img.shields.io/badge/size-74_KB-23A55A?style=flat-square)](dist/SensorLookup.plugin.js)
+[![release](https://img.shields.io/badge/скачать-последний_релиз-2EA043?style=flat-square&logo=github)](https://github.com/dxvxlery/sensor-lookup/releases/latest)
+[![size](https://img.shields.io/badge/size-75_KB-23A55A?style=flat-square)](dist/SensorLookup.plugin.js)
 
-[Возможности](#возможности) · [Установка](#установка) · [Токены](#токены) · [Использование](#использование) · [Вопросы](#вопросы)
+[Возможности](#возможности) · [Установка](#установка) · [Токены](#токены) · [Обновления](#обновления) · [Использование](#использование) · [Вопросы](#вопросы)
 
 </div>
 
@@ -36,7 +37,7 @@
 - Ответы сохраняются на время, так что повторное открытие профиля мгновенное.
 - Из друзей можно перейти в профиль друга и вернуться назад.
 - Если сайт ответил чем-то странным, ломается только одна вкладка, остальное окно работает.
-- После обновления плагин показывает, что нового.
+- Плагин обновляется сам и после обновления показывает, что нового.
 
 </details>
 
@@ -45,7 +46,7 @@
 > [!IMPORTANT]
 > Нужен свой аккаунт на discord-sensor.com и установленный [BetterDiscord](https://betterdiscord.app).
 
-1. Скачай [`SensorLookup.plugin.js`](dist/SensorLookup.plugin.js).
+1. Скачай `SensorLookup.plugin.js` из [последнего релиза](https://github.com/dxvxlery/sensor-lookup/releases/latest).
 2. Открой Настройки → **BetterDiscord** → **Плагины** → **Открыть папку плагинов** и положи туда файл.
 3. Включи **SensorLookup** в списке.
 
@@ -72,6 +73,10 @@ flowchart LR
 > Вставлять ничего не нужно. Пока открыты настройки плагина, он сам замечает скопированные значения, сохраняет их и очищает буфер обмена.
 
 После этого нажми **Проверить**: плагин сделает пробный запрос и скажет, работает ли.
+
+## Обновления
+
+Плагин проверяет новую версию через 15 секунд после запуска Discord и затем раз в 6 часов, а перед установкой спрашивает. Проверить вручную или выключить автопроверку можно в настройках, раздел «Обновления». Все релизы есть на [странице релизов](https://github.com/dxvxlery/sensor-lookup/releases) и в [списке изменений](CHANGELOG.md) (на английском).
 
 ## Использование
 
@@ -113,6 +118,19 @@ flowchart LR
 
 > [!CAUTION]
 > Не пересылай никому файл `SensorLookup.config.json`: по `sessionid` можно войти в твой аккаунт на сайте.
+
+<details>
+<summary><b>GitHub Packages</b></summary>
+
+Каждый релиз также публикуется пакетом `@dxvxlery/sensor-lookup` в GitHub Packages. В пакете лежит собранный плагин в `dist/`.
+
+```powershell
+npm install @dxvxlery/sensor-lookup --registry=https://npm.pkg.github.com
+```
+
+Для GitHub Packages нужен персональный токен с правом `read:packages` в `.npmrc`.
+
+</details>
 
 <details>
 <summary><b>Сборка из исходников</b></summary>

@@ -1,9 +1,34 @@
 {
-  "name": "sensor-lookup",
-  "version": "4.1.0",
-  "private": true,
-  "type": "module",
+  "name": "@dxvxlery/sensor-lookup",
+  "version": "4.2.0",
   "description": "Right-click a member to see their discord-sensor.com profile: current voice channel, stats and roles, friends and shared voice sessions, nicknames, servers, media.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "dist/SensorLookup.plugin.js",
+  "files": [
+    "dist/SensorLookup.plugin.js",
+    "README.md",
+    "README.ru.md",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "betterdiscord",
+    "betterdiscord-plugin",
+    "discord",
+    "discord-sensor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxvxlery/sensor-lookup.git"
+  },
+  "homepage": "https://github.com/dxvxlery/sensor-lookup#readme",
+  "bugs": {
+    "url": "https://github.com/dxvxlery/sensor-lookup/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "updateUrl": "https://raw.githubusercontent.com/dxvxlery/sensor-lookup/main/dist/SensorLookup.plugin.js",
   "scripts": {
     "build": "node --no-warnings --experimental-strip-types build.ts",
     "typecheck": "tsc",
@@ -11,7 +36,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "node --no-warnings --experimental-strip-types build.ts --test",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build"
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build",
+    "notes": "node --no-warnings --experimental-strip-types build.ts --notes"
   },
   "devDependencies": {
     "@types/node": "22.10.2",
@@ -21,6 +47,5 @@
     "prettier": "3.4.2",
     "typescript": "5.7.2",
     "typescript-eslint": "8.18.1"
-  },
-  "updateUrl": ""
+  }
 }
