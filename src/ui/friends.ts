@@ -3,7 +3,7 @@ import { api } from "../api";
 import { num, fmtNum, fmtDur, fmtHours, fmtDate, fmtDay, fmtTime, relTime, toDate, userAvatar, guildIcon } from "../format";
 import { sessionSummary } from "../parse";
 import { guard } from "./boundary";
-import { useLoad, State, Empty, Avatar, Pager, Icon, IconBtn, Seg, Skeleton, delay } from "./common";
+import { useLoad, State, Empty, Avatar, Pager, Icon, IconBtn, Seg, Skeleton, SortSelect, delay } from "./common";
 
 const Bar = ({ v, max }: { v: number; max: number }) =>
   h("div", { className: "sl-bar" }, h("i", { style: { width: Math.max(3, (v / max) * 100) + "%" } }));
@@ -103,22 +103,41 @@ export interface Target {
   avatar?: string | null;
 }
 
+const FRIEND_SORTS: Record<string, [string, string, string]> = {
+  most: ["duration", "desc", "больше всего вместе"],
+  least: ["duration", "asc", "меньше всего вместе"],
+  recent: ["last", "desc", "недавно вместе"],
+  oldest: ["last", "asc", "давно вместе"],
+};
+
 export function FriendsTab({ uid, onOpen }: { uid: string; onOpen: (t: Target) => void }) {
   const [page, setPage] = useState(0);
+  const [sort, setSort] = useState("most");
   const [open, setOpen] = useState<string | null>(null);
-  useEffect(() => setOpen(null), [page]);
-  const st = useLoad((f: boolean) => api.friends(uid, page, f), [uid, page]);
+  useEffect(() => setOpen(null), [page, sort]);
+  const [by, order] = FRIEND_SORTS[sort];
+  const st = useLoad((f: boolean) => api.friends(uid, page, by, order, f), [uid, page, sort]);
   return State(
     {
       st,
-      left: (d: any) =>
-        d?.friends?.totalFriends != null ? h("span", { className: "sl-count" }, `всего ${fmtNum(d.friends.totalFriends)}`) : null,
+      left: (d: any) => [
+        h(SortSelect, {
+          key: "s",
+          value: sort,
+          options: FRIEND_SORTS,
+          onChange: (v: string) => {
+            setSort(v);
+            setPage(0);
+          },
+        }),
+        d?.friends?.totalFriends != null ? h("span", { key: "c", className: "sl-count" }, `всего ${fmtNum(d.friends.totalFriends)}`) : null,
+      ],
     },
     (d: any) => {
       const fr = d?.friends || {};
       const all = Array.isArray(fr.records) ? fr.records : [];
       if (!all.length && page === 0) return h(Empty, { icon: "🤝", text: "Совместных звонков не найдено." });
-      const per = all.length || 30;
+      const per = 30;
       const total = num(fr.totalPages);
       const max = Math.max(1, ...all.map((x: any) => num(x.friends_online_duration) || 0));
       const list = all.map((x: any, i: number): [any, number] => [x, page * per + i + 1]);
@@ -140,7 +159,11 @@ export function FriendsTab({ uid, onOpen }: { uid: string; onOpen: (t: Target) =
                 title: "Совместные голосовые каналы",
                 onClick: () => setOpen(isOpen ? null : id),
               },
-              h("div", { className: "sl-rank" + (rank <= 3 ? " top" : "") }, ["🥇", "🥈", "🥉"][rank - 1] || rank),
+              h(
+                "div",
+                { className: "sl-rank" + (sort === "most" && rank <= 3 ? " top" : "") },
+                (sort === "most" && ["🥇", "🥈", "🥉"][rank - 1]) || rank,
+              ),
               h(Avatar, { className: "sl-av", src: userAvatar(id, x.avatar), name: x.username, seed: id }),
               h(
                 "div",

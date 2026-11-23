@@ -7,12 +7,14 @@ import { InfoTab } from "./info";
 import { FriendsTab, type Target } from "./friends";
 import { NicknamesTab, GuildsTab } from "./lists";
 import { MediaTab } from "./media";
+import { EventsTab } from "./events";
 import { VoiceNow } from "./voice";
 import { guard } from "./boundary";
 
 const TABS: [string, string, IconName][] = [
   ["info", "Инфо", "info"],
   ["friends", "Друзья", "friends"],
+  ["events", "События", "clock"],
   ["nicknames", "Ники", "nick"],
   ["guilds", "Серверы", "guilds"],
   ["media", "Медиа", "media"],
@@ -92,6 +94,7 @@ export function Lookup({ initial, onClose }: { initial: Target; onClose: () => v
     {
       info: () => h(InfoTab, { st: info, uid: cur.id }),
       friends: () => h(FriendsTab, { uid: cur.id, onOpen: open }),
+      events: () => h(EventsTab, { uid: cur.id, onOpen: open }),
       nicknames: () => h(NicknamesTab, { uid: cur.id }),
       guilds: () => h(GuildsTab, { uid: cur.id }),
       media: () => h(MediaTab, { uid: cur.id }),

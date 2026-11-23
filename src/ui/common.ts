@@ -19,6 +19,7 @@ const P = {
   chev: "M9.3 6.7 10.7 5.3 17.4 12l-6.7 6.7-1.4-1.4L14.6 12 9.3 6.7Z",
   refresh: "M17.6 6.4A8 8 0 1 0 19.7 14h-2.1a6 6 0 1 1-1.4-6.2L13 11h7V4l-2.4 2.4Z",
   dl: "M5 20h14v-2H5v2Zm14-9h-4V3H9v8H5l7 7 7-7Z",
+  clock: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 11h-5v-2h3V6h2v7Z",
   search: "M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5Zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z",
 };
 export type IconName = keyof typeof P;
@@ -220,3 +221,18 @@ export const match = (q: string, ...fields: unknown[]) => {
     )
   );
 };
+
+export const SortSelect = ({
+  value,
+  options,
+  onChange,
+}: {
+  value: string;
+  options: Record<string, string[]>;
+  onChange: (v: string) => void;
+}) =>
+  h(
+    "select",
+    { className: "sl-select", value, "aria-label": "Сортировка", onChange: (e) => onChange(e.target.value) },
+    Object.entries(options).map(([k, o]) => h("option", { key: k, value: k }, o[o.length - 1])),
+  );

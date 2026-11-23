@@ -6,11 +6,11 @@
 
 **A one-click profile of any Discord member, with data from [discord-sensor.com](https://discord-sensor.com) right inside the client.**
 
-[![version](https://img.shields.io/badge/version-4.2.0-5865F2?style=flat-square)](dist/SensorLookup.plugin.js)
+[![version](https://img.shields.io/badge/version-4.3.0-5865F2?style=flat-square)](dist/SensorLookup.plugin.js)
 [![BetterDiscord](https://img.shields.io/badge/BetterDiscord-plugin-3E82E5?style=flat-square)](https://betterdiscord.app)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)](src)
 [![release](https://img.shields.io/badge/download-latest_release-2EA043?style=flat-square&logo=github)](https://github.com/dxvxlery/sensor-lookup/releases/latest)
-[![size](https://img.shields.io/badge/size-75_KB-23A55A?style=flat-square)](dist/SensorLookup.plugin.js)
+[![size](https://img.shields.io/badge/size-81_KB-23A55A?style=flat-square)](dist/SensorLookup.plugin.js)
 
 [Features](#features) · [Install](#install) · [Tokens](#tokens) · [Updates](#updates) · [Usage](#usage) · [FAQ](#faq)
 
@@ -29,7 +29,8 @@ Right-click a member → **Discord Sensor** to open their profile window.
 | :-: | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 🔊  | **Voice now** | The voice channel they are in right now, how long they've been there, who else is in it, mic and sound state. If they're not in voice, where they were last. Refreshes on its own. |
 | 👤  | **Info**      | Time in voice, messages, reputation, roles across servers and comments about the person.                                                                                           |
-| 🤝  | **Friends**   | Who they spend the most voice time with. Click a friend to see your shared voice sessions: where, when and for how long.                                                           |
+| 🤝  | **Friends**   | Who they spend the most voice time with, sortable by time together or by how recently. Click a friend to see your shared voice sessions: where, when and for how long.             |
+| 🕒  | **Events**    | Voice channel history (sort by date or length) and server joins and leaves. Click a voice session to see who else was in the channel.                                              |
 | 🏷️  | **Nicknames** | Nickname history per server.                                                                                                                                                       |
 | 🏰  | **Servers**   | Shared servers with member counts, messages and voice time. Searchable and sortable.                                                                                               |
 | 🖼️  | **Media**     | Avatars, screen captures and deleted images, with a full-screen viewer.                                                                                                            |
@@ -85,6 +86,7 @@ The plugin checks for a new version 15 seconds after Discord starts and then eve
 
 - **Open a profile:** right-click a member in a server or DM → **Discord Sensor**.
 - **Shared voice sessions:** **Friends** tab → click a friend.
+- **Who was in a voice channel:** **События** (Events) tab → click a voice session.
 - **Friend's profile:** the person button to the right of a friend.
 - **Fresh data:** the refresh button above a tab.
 - **Close:** <kbd>Esc</kbd> or click outside the window. In the media viewer use <kbd>←</kbd> <kbd>→</kbd>.

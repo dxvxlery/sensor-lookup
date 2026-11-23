@@ -1551,3 +1551,40 @@ button.sl-chip:disabled {
   align-self: center;
   margin-right: 2px;
 }
+
+.sl-ev {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.sl-ev.is-join {
+  color: var(--text-positive, #23a55a);
+  background: rgba(35, 165, 90, 0.14);
+}
+.sl-ev.is-leave {
+  color: var(--text-danger, #f23f43);
+  background: rgba(242, 63, 67, 0.12);
+}
+.sl-tabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sl-tabs::-webkit-scrollbar {
+  display: none;
+}
+.sl-tab {
+  padding: 8px 4px;
+  gap: 5px;
+}
+.sl-ses.click {
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.sl-ses.click:hover {
+  background: var(--background-modifier-hover, rgba(78, 80, 88, 0.3));
+}
+.sl-fr > .sl-ses {
+  margin-bottom: 0;
+}

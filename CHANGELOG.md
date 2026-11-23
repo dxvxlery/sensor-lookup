@@ -2,6 +2,18 @@
 
 All notable changes to SensorLookup. Downloads are on the [releases page](https://github.com/dxvxlery/sensor-lookup/releases).
 
+## 4.3.0 — 2026-11-23
+
+### Added
+
+- An **Events** tab: voice channel history and server joins and leaves.
+- Friend sorting: most or least time together, most or least recently together.
+- Click a voice event to see who else was in the channel and for how long; click a person to open their profile.
+
+### Fixed
+
+- Friend numbering on the last page is correct now.
+
 ## 4.2.0 — 2026-11-23
 
 ### Added
