@@ -120,19 +120,6 @@ flowchart LR
 > Не пересылай никому файл `SensorLookup.config.json`: по `sessionid` можно войти в твой аккаунт на сайте.
 
 <details>
-<summary><b>GitHub Packages</b></summary>
-
-Каждый релиз также публикуется пакетом `@dxvxlery/sensor-lookup` в GitHub Packages. В пакете лежит собранный плагин в `dist/`.
-
-```powershell
-npm install @dxvxlery/sensor-lookup --registry=https://npm.pkg.github.com
-```
-
-Для GitHub Packages нужен персональный токен с правом `read:packages` в `.npmrc`.
-
-</details>
-
-<details>
 <summary><b>Сборка из исходников</b></summary>
 
 ```powershell

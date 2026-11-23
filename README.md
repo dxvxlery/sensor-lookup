@@ -123,19 +123,6 @@ Only on your machine, in the BetterDiscord plugins folder. They are sent only to
 > Never share `SensorLookup.config.json`: the `sessionid` in it gives access to your account on the site.
 
 <details>
-<summary><b>GitHub Packages</b></summary>
-
-Every release is also published as `@dxvxlery/sensor-lookup` to GitHub Packages. The package contains the built plugin in `dist/`.
-
-```powershell
-npm install @dxvxlery/sensor-lookup --registry=https://npm.pkg.github.com
-```
-
-GitHub Packages requires a personal access token with `read:packages` in your `.npmrc`.
-
-</details>
-
-<details>
 <summary><b>Building from source</b></summary>
 
 ```powershell
