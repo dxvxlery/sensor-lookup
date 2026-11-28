@@ -23,7 +23,7 @@
 
 ## Features
 
-Right-click a member → **Discord Sensor** to open their profile window.
+Right-click a member → **SensorLookup** to open their profile window.
 
 |     | Tab           | What you get                                                                                                                                                                       |
 | :-: | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -84,7 +84,7 @@ The plugin checks for a new version 15 seconds after Discord starts and then eve
 
 ## Usage
 
-- **Open a profile:** right-click a member in a server or DM → **Discord Sensor**.
+- **Open a profile:** right-click a member in a server or DM → **SensorLookup**.
 - **Shared voice sessions:** **Friends** tab → click a friend.
 - **Who was in a voice channel:** **События** (Events) tab → click a voice session.
 - **Friend's profile:** the person button to the right of a friend.
@@ -101,7 +101,7 @@ The plugin checks for a new version 15 seconds after Discord starts and then eve
 </details>
 
 <details>
-<summary><b>No "Discord Sensor" item in the menu</b></summary>
+<summary><b>No "SensorLookup" item in the menu</b></summary>
 
 Make sure the plugin is enabled and reload Discord (<kbd>Ctrl</kbd>+<kbd>R</kbd>).
 

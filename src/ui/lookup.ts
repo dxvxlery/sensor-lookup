@@ -111,7 +111,7 @@ export function Lookup({ initial, onClose }: { initial: Target; onClose: () => v
         className: "sl-card",
         role: "dialog",
         "aria-modal": true,
-        "aria-label": `Discord Sensor: ${name}`,
+        "aria-label": `SensorLookup: ${name}`,
         style: {
           "--sl-accent": `hsl(${hh},70%,58%)`,
           "--sl-accent2": `hsl(${(hh + 40) % 360},75%,62%)`,

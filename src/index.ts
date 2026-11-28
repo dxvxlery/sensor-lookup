@@ -60,7 +60,7 @@ export default class SensorLookup {
       if (!user?.id || !Array.isArray(kids) || kids.some((k: any) => k?.props?.id === "sensor-lookup")) return;
       kids.push(
         BdApi.ContextMenu.buildItem({ type: "separator" }),
-        BdApi.ContextMenu.buildItem({ type: "text", id: "sensor-lookup", label: "Discord Sensor", action: () => open(user) }),
+        BdApi.ContextMenu.buildItem({ type: "text", id: "sensor-lookup", label: "SensorLookup", action: () => open(user) }),
       );
     };
     this.unpatch = MENUS.map((m) => BdApi.ContextMenu.patch(m, patch));
